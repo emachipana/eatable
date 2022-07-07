@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AuthenticatedApp from "./AuthenticatedApp";
 import Loader from "./components/Loader";
+import { ProductProvider } from "./context/products-context";
 import { useUser } from "./context/user-context";
 import UnauthenticatedApp from "./UnauthenticatedApp";
 
@@ -19,7 +20,13 @@ function App() {
       ?
       <Loader />
       :
-      user ? <AuthenticatedApp /> : <UnauthenticatedApp />
+      user 
+      ?
+      <ProductProvider>
+        <AuthenticatedApp />
+      </ProductProvider> 
+      :
+      <UnauthenticatedApp />
   );
 }
 
