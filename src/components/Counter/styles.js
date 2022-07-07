@@ -10,7 +10,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 2px;
+  padding: 4px;
 `;
 
 export const Text = styled.p`

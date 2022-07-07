@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import Button from "./components/Button";
-import Counter from "./components/Counter";
+import CardItem from "./components/CardItem/card-item";
 import FoodCard from "./components/FoodCard";
 
 const Container = styled.div`
@@ -17,7 +17,7 @@ function App() {
       />
       <Button>Login</Button>
       <Button disabled>SignUp</Button>
-      <Counter value={1}/>
+      <CardItem />
     </Container>
   );
 }
