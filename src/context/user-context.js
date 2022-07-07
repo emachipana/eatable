@@ -6,17 +6,14 @@ const UserContext = createContext();
 
 function UserProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if(!user) return;
     getUser().then(data => {
       setTimeout(() => {
         setUser(data);
-        setIsLoading(false);
       }, 500);
     }).catch((e) => {
-      setIsLoading(false);
       console.error(e.message);
     })
   }, [user]);
@@ -43,7 +40,6 @@ function UserProvider({ children }) {
     <UserContext.Provider
       value={{
         user,
-        isLoading,
         login: handleLogin,
         signup: handleSignUp,
         logout: handleLogout
