@@ -1,9 +1,9 @@
 import { Formik } from "formik";
 import Button from "../Button";
 import Input from "../Input";
-import { Form, Container } from "./styles";
+import { Form, Container, ErrorMessage } from "./styles";
 
-function SessionForm({ handleSubmit, type }) {
+function SessionForm({ handleSubmit, type, error }) {
   function validate(values) {
     const errors = {};
 
@@ -62,6 +62,7 @@ function SessionForm({ handleSubmit, type }) {
               error={errors.password}
               isTouched={touched.password}
             />
+            { error && <ErrorMessage>{ error }</ErrorMessage>}
           </Container>
           <Button disabled={!isValid} type="submit">{type}</Button>
         </Form>
