@@ -1,23 +1,25 @@
-import styled from "@emotion/styled";
-import SessionForm from "./components/SessionForm/session-form";
-import SessionHeader from "./components/SessionHeader";
-
-const Container = styled.div`
-  margin: 2rem;
-`;
+import { useEffect, useState } from "react";
+import AuthenticatedApp from "./AuthenticatedApp";
+import Loader from "./components/Loader";
+import { useUser } from "./context/user-context";
+import UnauthenticatedApp from "./UnauthenticatedApp";
 
 function App() {
-  function handleSubmit(values) {
-    console.log(values)
-  }
+  const { user } = useUser();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 500)
+  }, [])
 
   return (
-    <>
-      <SessionHeader />
-      <Container>
-        <SessionForm type="Login" handleSubmit={handleSubmit}/>
-      </Container>
-    </>
+      isLoading
+      ?
+      <Loader />
+      :
+      user ? <AuthenticatedApp /> : <UnauthenticatedApp />
   );
 }
 

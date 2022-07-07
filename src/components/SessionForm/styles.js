@@ -16,3 +16,11 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 60px;
 `;
+
+export const ErrorMessage = styled.p`
+  margin-top: -15px;
+  font-size: 18px;
+  text-align: center;
+  color: #C94C4C;
+`;
+
