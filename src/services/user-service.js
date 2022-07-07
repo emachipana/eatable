@@ -19,4 +19,3 @@ export async function updateUser(payload) {
 
   return user;
 }
-
