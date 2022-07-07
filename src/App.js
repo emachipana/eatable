@@ -3,7 +3,7 @@ import SessionForm from "./components/SessionForm/session-form";
 import SessionHeader from "./components/SessionHeader";
 
 const Container = styled.div`
-  margin: 5rem;
+  margin: 2rem;
 `;
 
 function App() {

@@ -7,8 +7,8 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
+  justify-content: space-around;
+  gap: 2rem;
 `;
 
 export const Container = styled.div`
