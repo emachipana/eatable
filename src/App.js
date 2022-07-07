@@ -1,14 +1,18 @@
 import styled from "@emotion/styled";
-import Input from "./components/Input";
+import SessionForm from "./components/SessionForm/session-form";
 
 const Container = styled.div`
   margin: 5rem;
 `;
 
 function App() {
+  function handleSubmit(values) {
+    console.log(values)
+  }
+
   return (
     <Container>
-      <Input label="Email" type="email" error="invalid format" isTouched/>
+      <SessionForm type="login" handleSubmit={handleSubmit}/>
     </Container>
   );
 }
