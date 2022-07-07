@@ -4,7 +4,7 @@ import { colors } from "../../styles";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 314px;
+  max-width: 322px;
   gap: 0.5rem;
 `;
 
@@ -16,7 +16,7 @@ export const Label = styled.label`
 `;
 
 export const StyledInput = styled.input`
-  width: 100%;
+  width: 310px;
   box-sizing: border-box;
   border: none;
   border-bottom: 1px solid ${colors.black};
