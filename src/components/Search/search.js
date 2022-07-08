@@ -1,17 +1,39 @@
 import * as Style from "./styles";
 import { BiSearch } from "react-icons/bi";
 import { BsCart } from "react-icons/bs";
+import { AiOutlineLeft } from "react-icons/ai";
 import { colors } from "../../styles";
 
-function Search() {
+function Search({ isSearching, handleChange, value, handleClick }) {
+
+  function onChange(e) {
+    handleChange(e.target.value)
+  }
+
   return (
     <Style.Container>
       <Style.Section>
-        <BiSearch 
+        {
+          isSearching
+          ?
+          <AiOutlineLeft
+            onClick={handleClick}
+            size="18px"
+            style={{cursor: "pointer"}}
+          />
+          :
+          <BiSearch 
           size="19px"
           style={{cursor: "pointer"}}
+          />
+        }
+        <Style.Input
+          name="search"
+          type="text"
+          placeholder="Search"
+          onChange={onChange}
+          value={value}
         />
-        <Style.Input type="text" placeholder="Search"/>
       </Style.Section>
       <BsCart 
         size="22px"
