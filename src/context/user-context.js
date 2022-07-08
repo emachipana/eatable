@@ -20,7 +20,7 @@ function UserProvider({ children }) {
     }).catch((_e) => {
       setIsLoading(false);
     })
-  }, [user]);
+  }, []);
 
   function handleLogin(credentials) {
     return login(credentials).then((user) => {
