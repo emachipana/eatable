@@ -30,7 +30,12 @@ function ProductProvider({ children }) {
   }
 
   function searchProducts(query) {
-    return Object.values(products).filter(product => product.includes(query));
+    const allProducts = [];
+    Object.values(products).forEach(prod => {
+      allProducts.push(...prod);
+    })
+    
+    return allProducts.filter(product => product.name.toLowerCase().includes(query.toLowerCase()));
   }
 
   return (
