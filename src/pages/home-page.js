@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Founded from "../components/Founded";
 import ListProducts from "../components/ListProducts/list-products";
 import Search from "../components/Search";
 import SlideMenu from "../components/SlideMenu";
@@ -51,7 +52,11 @@ function HomePage() {
       {
         isSearching
         ?
-        <p>Founded {currentProducts.length} products</p>
+        <Founded 
+          lenght={currentProducts.length}
+          type="search"
+          message={`Founded ${currentProducts.length} ${currentProducts.length === 1 ? "result" : "results"}`}
+        />
         :
         <SlideMenu 
           options={[...options]}
