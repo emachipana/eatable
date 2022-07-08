@@ -7,11 +7,12 @@ import { useProducts } from "../context/products-context";
 function HomePage() {
   const { products } = useProducts();
   const options = Object.keys(products);
-  const [currentPage, setCurrentPage] = useState(options[0]);
+  const [currentPage, setCurrentPage] = useState(localStorage.getItem("current_page") || options[0]);
   const [currentProducts, setCurrentProducts] = useState([]);
 
   useEffect(() => {
     setCurrentProducts(products[currentPage]);
+    localStorage.setItem("current_page", currentPage);
   }, [currentPage, products])
 
   return (
