@@ -28,6 +28,7 @@ function Search({ isSearching, handleChange, value, handleClick }) {
           />
         }
         <Style.Input
+          autoComplete="off"
           name="search"
           type="text"
           placeholder="Search"
