@@ -1,6 +1,6 @@
 import SessionForm from "../components/SessionForm";
 import { useUser } from "../context/user-context";
-import { Container } from "./ui";
+import { Container, MainContainer } from "./styles";
 
 function SignupPage() {
   const { error } = useUser();
@@ -12,13 +12,15 @@ function SignupPage() {
   }
 
   return (
-    <Container>
-      <SessionForm 
-        handleSubmit={handleSubmit}
-        type="Sign Up"
-        error={error}
-      />
-    </Container>
+    <MainContainer>
+      <Container>
+        <SessionForm 
+          handleSubmit={handleSubmit}
+          type="Sign Up"
+          error={error}
+        />
+      </Container>
+    </MainContainer>
   );
 }
 

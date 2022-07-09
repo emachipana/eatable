@@ -16,16 +16,20 @@ export const Label = styled.label`
 `;
 
 export const StyledInput = styled.input`
-  width: 310px;
+  width: 100%;
   box-sizing: border-box;
   border: none;
   border-bottom: 1px solid ${colors.black};
-  font-size: 17px;
+  font-size: 16px;
   line-height: 23px;
   color: ${colors.black};
   outline: none;
   background-color: transparent;
   padding: 0 5px;
+  &:disabled {
+    color: ${colors.gray.normal};
+    border-bottom: 1px solid ${colors.gray.normal};
+  }
 `;
 
 export const ErrorMessage = styled.p`
