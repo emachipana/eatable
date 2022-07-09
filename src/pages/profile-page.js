@@ -3,15 +3,26 @@ import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { useUser } from "../context/user-context";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import { useNavigate } from "react-router-dom";
 
 function ProfilePage() {
   const { user, logout } = useUser();
+
+  const IconStyle = {
+    size: "18px",
+    cursor: "pointer"
+  }
+
+  const navigate = useNavigate();
 
   return (
     <MainContainer>
       <Container>
         <Header>
-          <AiOutlineLeft />
+          <AiOutlineLeft
+            onClick={() => navigate("/home")}
+            {...IconStyle}
+          />
           <Title>My Profile</Title>
         </Header>
         <SectionProfile>
@@ -40,7 +51,7 @@ function ProfilePage() {
         </FormContainer>
         <LinkHi to="/history">
           <FormTitle>History</FormTitle>
-          <AiOutlineRight />
+          <AiOutlineRight {...IconStyle}/>
         </LinkHi>
         <Button
           style={{alignSelf: "center", position: "fixed", bottom: "70px"}}
