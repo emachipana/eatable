@@ -15,7 +15,6 @@ function ProductProvider({ children }) {
       }, {})
       setTimeout(() => {
         setProducts(products);
-        console.log(products);
         setIsLoading(false);
       }, 500);
 
@@ -25,15 +24,20 @@ function ProductProvider({ children }) {
     });
   }, []);
 
-  function findProduct(category, id) {
-    return products[category].find(product => product.id === id);
+  function findProduct(id) {
+    const allProducts = [];
+    Object.values(products).forEach(prod => {
+      allProducts.push(...prod);
+    });
+
+    return allProducts.find(product => product.id === id);
   }
 
   function searchProducts(query) {
     const allProducts = [];
     Object.values(products).forEach(prod => {
       allProducts.push(...prod);
-    })
+    });
     
     return allProducts.filter(product => product.name.toLowerCase().includes(query.toLowerCase()));
   }

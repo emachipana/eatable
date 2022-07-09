@@ -17,10 +17,6 @@ export const StyledButton = styled.button`
   line-height: 23px;
   color: ${colors.white};
   cursor: pointer;
-  transition: .2s ease-in;
-  &:active {
-    transform: translateY(5px);
-  }
   &:disabled {
     transform: none;
     opacity: .6;

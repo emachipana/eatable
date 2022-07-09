@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
+import { Link } from 'react-router-dom';
 import { colors } from '../../styles';
 
-export const Container = styled.div`
+export const Container = styled(Link)`
   max-height: 300px;
   min-height: 285px;
   padding: 0.5rem;
@@ -45,6 +46,7 @@ export const Info = styled.div`
 
 export const Name = styled.h2`
   text-align: center;
+  color: ${colors.black};
 `;
 
 export const Price = styled.p`

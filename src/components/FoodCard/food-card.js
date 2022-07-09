@@ -1,8 +1,8 @@
 import * as Style from "./styles";
 
-function FoodCard({ name, price, image }) {
+function FoodCard({ id, name, price, image }) {
   return (
-    <Style.Container>
+    <Style.Container to={`/product/${id}`}>
       <Style.Card>
         <Style.Image src={ image } alt="food-picture" />
         <Style.Info>
