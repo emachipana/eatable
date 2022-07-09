@@ -3,7 +3,6 @@ import { css } from '@emotion/react'
 import { Container, Section, Link } from "./styles";
 import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
 import { colors } from '../../styles';
-//current categories state, when i have a input empty set first categories in other case setSearch categories
 
 function SlideMenu({ options, currentOption, setCurrentOption }) {
   const IconStyle = css`
@@ -22,11 +21,12 @@ function SlideMenu({ options, currentOption, setCurrentOption }) {
     }
   `;
 
-  let currentScroll = 30;
+  let currentScroll = parseInt(localStorage.getItem("currentScroll")) || 30;
   let scrollAmount = 180;
 
   const hScroll = document.getElementById("slider");
   const sCont = document.getElementById("section");
+  if(sCont) sCont.style.left = currentScroll + "px";
   let maxScroll = -sCont?.offsetWidth + hScroll?.offsetWidth;
 
   function scrollHorizontalY(val){
@@ -36,6 +36,7 @@ function SlideMenu({ options, currentOption, setCurrentOption }) {
     if(currentScroll < maxScroll) currentScroll = maxScroll - 30;
 
     sCont.style.left = currentScroll + "px";
+    localStorage.setItem("currentScroll", currentScroll);
   }
 
   return (
