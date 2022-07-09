@@ -7,6 +7,7 @@ function ListProducts({ products }) {
       { products.map(product => (
         <FoodCard
           key={product.id}
+          id={product.id}
           name={product.name}
           price={product.price}
           image={product.picture_url}
