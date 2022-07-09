@@ -81,7 +81,7 @@ export const SectionProfile = styled.div`
   justify-content: space-around;
 `;
 
-export const FormContainer = styled.div`
+export const FormContainer = styled.form`
   width: 314px;
   display: flex;
   flex-direction: column;
@@ -123,3 +123,8 @@ export const LinkHi = styled(Link)`
     transform: translateY(-5px);
   }
 `;
+
+export const IconStyle = {
+  size: "18px",
+  cursor: "pointer"
+}
