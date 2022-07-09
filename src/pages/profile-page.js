@@ -1,4 +1,4 @@
-import { Container, FormContainer, FormTitle, Header, LinkEdit, LinkHi, MainContainer, SectionProfile, Subtitle, Title } from "./styles";
+import { IconStyle, Container, FormContainer, FormTitle, Header, LinkEdit, LinkHi, MainContainer, SectionProfile, Subtitle, Title } from "./styles";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { useUser } from "../context/user-context";
 import Input from "../components/Input";
@@ -7,11 +7,6 @@ import { useNavigate } from "react-router-dom";
 
 function ProfilePage() {
   const { user, logout } = useUser();
-
-  const IconStyle = {
-    size: "18px",
-    cursor: "pointer"
-  }
 
   const navigate = useNavigate();
 
@@ -45,7 +40,7 @@ function ProfilePage() {
           <Input 
             disabled
             name="adress"
-            value={user.adress || undefined}
+            value={user.address || undefined}
             placeholder="no adress provided"
           />
         </FormContainer>

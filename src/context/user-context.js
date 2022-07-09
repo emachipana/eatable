@@ -53,6 +53,7 @@ function UserProvider({ children }) {
         user,
         error,
         isLoading,
+        setUser,
         setError,
         login: handleLogin,
         signup: handleSignUp,
