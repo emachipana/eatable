@@ -1,6 +1,6 @@
 import SessionForm from "../components/SessionForm";
 import { useUser } from "../context/user-context";
-import { MainContainer } from "./ui";
+import { Container, MainContainer } from "./styles";
 
 function LoginPage() {
 
@@ -12,11 +12,13 @@ function LoginPage() {
 
   return (
     <MainContainer>
-      <SessionForm 
-        handleSubmit={handleSubmit}
-        type="Login"
-        error={error}
-      />
+      <Container>
+        <SessionForm 
+          handleSubmit={handleSubmit}
+          type="Login"
+          error={error}
+        />
+      </Container>
     </MainContainer>
   );
 }
