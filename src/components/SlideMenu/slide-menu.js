@@ -56,8 +56,9 @@ function SlideMenu({ options, currentOption, setCurrentOption }) {
         size="25px"
       />
       <Section id="section">
-        { options.map(option => (
-          <Link 
+        { options.map((option, index) => (
+          <Link
+            key={index}
             onClick={() => setCurrentOption(option)}
             style={currentOption === option ? {borderBottom: `2px solid ${colors.orange}`, color: colors.orange} : null}
           >

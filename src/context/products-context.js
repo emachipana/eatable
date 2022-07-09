@@ -15,7 +15,6 @@ function ProductProvider({ children }) {
       }, {})
       setTimeout(() => {
         setProducts(products);
-        console.log(products);
         setIsLoading(false);
       }, 500);
 
