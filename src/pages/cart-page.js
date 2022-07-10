@@ -7,7 +7,7 @@ import { useUser } from "../context/user-context";
 import Button from "../components/Button";
 import { useState } from "react";
 
-function CartPage() {
+function CartPage({ setNewOrder }) {
   const navigate = useNavigate();
   const { user } = useUser();
 
@@ -15,6 +15,20 @@ function CartPage() {
   const filterProducts = productsFromStorage.filter(product => product.user === user.email);
 
   const [products, setProducts] = useState(filterProducts);
+
+  const items = filterProducts.map(product => ({id: product.id, quantity: product.quantity}));
+  const total = products.reduce((acc, prod) => parseInt(prod.price * prod.quantity) + acc, 0);
+
+  function handleClick() {
+    const newOrder = {
+      delivery_address: user.address,
+      items: items,
+      total: total
+    }
+
+    setNewOrder(newOrder);
+    navigate("/checkout");
+  }
 
   return (
     <MainContainer>
@@ -46,9 +60,9 @@ function CartPage() {
             <CartSection>
               <SectionProfile>
                 <p>Total</p>
-                <Title>${products.reduce((acc, prod) => parseInt(prod.price * prod.quantity) + acc, 0)}</Title>
+                <Title>${total}</Title>
               </SectionProfile>
-              <Button>Checkout</Button>
+              <Button onClick={handleClick}>Checkout</Button>
             </CartSection>
             </>
           }
