@@ -13,10 +13,11 @@ export const MainContainer = styled.div`
 export const Container = styled.div`
   width: 420px;
   margin: 0 auto;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  overflow: auto;
+  overflow: hidden;
 `;
 
 export const Section = styled.div`
@@ -128,3 +129,16 @@ export const IconStyle = {
   size: "18px",
   cursor: "pointer"
 }
+
+export const CartSection = styled.div`
+  position: fixed;
+  background-color: ${colors.gray.light};
+  z-index: 1;
+  width: 90%;
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+`;
+
