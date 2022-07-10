@@ -29,7 +29,8 @@ function ProductPage() {
     const newProduct = {
       id: parseInt(params.id),
       user: user.email,
-      quantity: 1
+      quantity: 1,
+      price: product.price
     };
     setIsPresent(true);
     localStorage.setItem("cartProducts", JSON.stringify([...products, newProduct ]))
