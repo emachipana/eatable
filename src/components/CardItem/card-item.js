@@ -1,28 +1,48 @@
 import { useState } from "react";
+import { useProducts } from "../../context/products-context";
 import Counter from "../Counter";
 import * as Style from "./styles";
 
-function CardItem({id, currentValue}) {
-  // pending find by id in my context
+function CardItem({id, currentValue, handleProduct}) {
+  const { findProduct } = useProducts();
+
+  const product = findProduct(id);
+  const products = JSON.parse(localStorage.getItem("cartProducts"));
+  const productCart = products.find(product => product.id === id);
+  const index = products.findIndex(product => product.id === id);
 
   const [counter, setCounter] = useState(currentValue || 1);
 
   function handleIncrease() {
     setCounter(counter + 1);
+    productCart.quantity = counter + 1;
+    products[index] = productCart;
+    localStorage.setItem("cartProducts", JSON.stringify(products));
+    handleProduct(products);
   }
 
   function handleDecrease() {
-    if(counter < 1) return;
+    if(counter <= 1) {
+      const newProducts =  products.filter(product => product.id !== id);
+      localStorage.setItem("cartProducts", JSON.stringify(newProducts));
+      handleProduct(newProducts);
+      return;
+    };
+    
     setCounter(counter - 1);
+    productCart.quantity = counter - 1;
+    products[index] = productCart;
+    localStorage.setItem("cartProducts", JSON.stringify(products));
+    handleProduct(products);
   }
 
   return (
     <Style.Container>
-      <Style.Image src="https://live.mrf.io/statics/i/ps/irecetasfaciles.com/wp-content/uploads/2019/01/pizza-con-salami-chorizo-beacon.jpg?width=1200&enable=upscale" alt="food-image" />
+      <Style.Image src={product.picture_url} alt="food-image" />
       <Style.Info>
-        <Style.Name>Veggie tomato mix</Style.Name>
+        <Style.Name>{product.name}</Style.Name>
         <Style.Section>
-          <Style.Price>$75.45</Style.Price>
+          <Style.Price>${product.price}</Style.Price>
           <Counter
             value={counter}
             handleDecrease={handleDecrease}
