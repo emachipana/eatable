@@ -13,8 +13,8 @@ export const MainContainer = styled.div`
 export const Container = styled.div`
   width: 420px;
   margin: 0 auto;
-  height: 100vh;
   display: flex;
+  height: 100%;
   flex-direction: column;
   gap: 15px;
   overflow: hidden;
@@ -130,15 +130,28 @@ export const IconStyle = {
   cursor: "pointer"
 }
 
+// cart
+
 export const CartSection = styled.div`
   position: fixed;
   background-color: ${colors.gray.light};
   z-index: 1;
-  width: 90%;
+  width: 420px;
   bottom: 40px;
+  left: 0;
+  margin: 0 auto;
+  right: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
 `;
 
+// checkout
+
+export const Checkout = styled.h1`
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 35px;
+  align-self: start;
+`;
