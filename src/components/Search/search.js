@@ -3,8 +3,10 @@ import { BiSearch } from "react-icons/bi";
 import { BsCart } from "react-icons/bs";
 import { AiOutlineLeft } from "react-icons/ai";
 import { colors } from "../../styles";
+import { useNavigate } from "react-router-dom";
 
 function Search({ isSearching, handleChange, value, handleClick }) {
+  const navigate = useNavigate();
 
   function onChange(e) {
     handleChange(e.target.value)
@@ -40,6 +42,7 @@ function Search({ isSearching, handleChange, value, handleClick }) {
         size="22px"
         color={colors.gray.normal}
         style={{cursor: "pointer"}}
+        onClick={() => navigate("/cart")}
       />
     </Style.Container>
   )
