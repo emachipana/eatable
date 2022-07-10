@@ -1,17 +1,14 @@
 import { useState } from "react";
 import { useProducts } from "../../context/products-context";
-import { useUser } from "../../context/user-context";
 import Counter from "../Counter";
 import * as Style from "./styles";
 
 function CardItem({id, currentValue, handleProduct}) {
   const { findProduct } = useProducts();
-  const { user } = useUser();
 
   const product = findProduct(id);
   const products = JSON.parse(localStorage.getItem("cartProducts"));
-  const filterProducts = products.filter(product => product.user === user.email);
-  const productCart = filterProducts.find(product => product.id === id);
+  const productCart = products.find(product => product.id === id);
   const index = products.findIndex(product => product.id === id);
 
   const [counter, setCounter] = useState(currentValue || 1);
@@ -19,23 +16,23 @@ function CardItem({id, currentValue, handleProduct}) {
   function handleIncrease() {
     setCounter(counter + 1);
     productCart.quantity = counter + 1;
-    filterProducts[index] = productCart;
-    localStorage.setItem("cartProducts", JSON.stringify([...products, filterProducts]));
-    handleProduct(filterProducts);
+    products[index] = productCart;
+    localStorage.setItem("cartProducts", JSON.stringify(products));
+    handleProduct(products);
   }
 
   function handleDecrease() {
     if(counter <= 1) {
-      const newProducts = filterProducts.filter(product => product.id !== id);
-      localStorage.setItem("cartProducts", JSON.stringify([...products, newProducts]));
+      const newProducts = products.filter(product => product.id !== id);
+      localStorage.setItem("cartProducts", JSON.stringify(newProducts));
       handleProduct(newProducts);
       return;
     };
     setCounter(counter - 1);
     productCart.quantity = counter - 1;
-    filterProducts[index] = productCart;
-    localStorage.setItem("cartProducts", JSON.stringify([...products, filterProducts]));
-    handleProduct(filterProducts);
+    products[index] = productCart;
+    localStorage.setItem("cartProducts", JSON.stringify(products));
+    handleProduct(products);
   }
 
   return (
